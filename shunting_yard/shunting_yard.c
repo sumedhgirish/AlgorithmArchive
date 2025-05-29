@@ -31,7 +31,7 @@ int StrToSymbols(char stringExpression[], Symbol outputBuffer[], int expressionL
   *outputBuffer++ = (Symbol) { .type = 'b', .contents.name = '(' };
 
   char charType;
-  int nBrackets[6];
+  int nBrackets[6] = {0};
   for (int i=0; i<expressionLength; ++i) {
     if (snipPtr-snippet > 7) return -1;
     if (!stringExpression[i]) {
@@ -48,7 +48,8 @@ int StrToSymbols(char stringExpression[], Symbol outputBuffer[], int expressionL
     }
     else {
       if (charType == 'F' && type == 'b') return -1;
-      switch (stringExpression[i-1]) {
+      // changed i-1 to i
+      switch (stringExpression[i]) {
         case '(': ++nBrackets[0]; break;
         case '[': ++nBrackets[1]; break;
         case '{': ++nBrackets[2]; break;

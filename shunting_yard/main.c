@@ -5,16 +5,18 @@
 #define MAX_SYMBOLS 1024
 
 
-int main(int argc, char* argv[])
+int main()
 {
-  if (argc != 2) {
-    printf("Usage: %s <expression without spaces>\n", argv[0]);
+  Symbol input_expression[MAX_SYMBOLS];
+  char inp[100];
+  scanf("%s", inp);
+  int input_size = StrToSymbols(inp, input_expression, 100);
+  if (input_size == -1) {
+    printf("Input expression is invalid!\n");
     return 1;
   }
 
-  Symbol input_expression[MAX_SYMBOLS];
-  int input_size = StrToSymbols(argv[1], input_expression, sizeof(argv[1]));
-
-  printf("Result: %f\n", ShuntingYard(input_expression, input_size, NULL, 0));
+  Variable vars[1] = { { "X", 7 } };
+  printf("Result: %f\n", ShuntingYard(input_expression, input_size, vars, 1));
   return 0;
 }

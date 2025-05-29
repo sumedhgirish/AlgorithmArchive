@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/crownedhog/concepts/algorithms/shunting_yard/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
